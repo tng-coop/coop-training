@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Co-op Training Quiz</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* General Styles */
         body {
@@ -91,6 +92,17 @@
         .result-incorrect {
             color: #B22222;
         }
+
+        #chartContainer {
+            display: none;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #F9F4E6;
+            border-radius: 8px;
+            border: 2px solid #A62639;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
     </style>
     <script>
         let currentSection = 0;  // Start from 0, to represent the start screen
@@ -145,10 +157,12 @@
             quizHistory.push(attempt);
             localStorage.setItem("quizHistory", JSON.stringify(quizHistory));
 
+            document.getElementById("chartContainer").style.display = "block";
             document.getElementById("result-summary").style.display = "block";
             document.getElementById("final-score").textContent = `You scored ${score} out of 3!`;
             document.getElementById("time-taken").textContent = `Time taken: ${timeTaken} seconds`;
 
+            displayChart();
             displayHistory();
         }
 
@@ -167,6 +181,44 @@
                     </p>
                 `;
                 historyDiv.innerHTML += attemptInfo;
+            });
+        }
+
+        function displayChart() {
+            const quizHistory = JSON.parse(localStorage.getItem("quizHistory")) || [];
+            const scores = quizHistory.map(attempt => attempt.score);
+            const times = quizHistory.map(attempt => attempt.timeTaken);
+            const labels = quizHistory.map((_, index) => `Attempt ${index + 1}`);
+
+            const ctx = document.getElementById('quizChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Score',
+                            data: scores,
+                            backgroundColor: 'rgba(166, 38, 57, 0.6)',
+                            borderColor: 'rgba(166, 38, 57, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Time Taken (seconds)',
+                            data: times,
+                            backgroundColor: 'rgba(110, 11, 20, 0.6)',
+                            borderColor: 'rgba(110, 11, 20, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
             });
         }
 
@@ -239,6 +291,10 @@
         </form>
         <p id="result3"></p>
         <button id="next3" style="display:none;" onclick="showFinalResult()">Finish</button>
+    </div>
+
+    <div id="chartContainer">
+        <canvas id="quizChart"></canvas>
     </div>
 
     <div id="result-summary">
