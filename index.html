@@ -170,14 +170,26 @@
             });
         }
 
-        // Keyboard event handling for selecting answers with keys 1, 2, 3, 4
         document.addEventListener('keydown', function(event) {
             const key = event.key;
+
             if (key >= '1' && key <= '4') {
-                const index = key - 1; // Convert key to index (0-based)
+                const index = key - 1;
                 const radios = document.querySelectorAll(`#section${currentSection} input[type="radio"]`);
                 if (radios[index]) {
                     radios[index].checked = true;
+                }
+            } else if (key === 'Enter') {
+                if (!answerSubmitted) {
+                    const submitButton = document.querySelector(`#section${currentSection} button[type="button"]`);
+                    submitButton.click();
+                } else {
+                    const nextButton = document.getElementById(`next${currentSection}`);
+                    if (nextButton && nextButton.style.display === 'inline') {
+                        nextButton.click();
+                    } else if (currentSection === 3) {
+                        showFinalResult();
+                    }
                 }
             }
         });
