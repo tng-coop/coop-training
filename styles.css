@@ -4,12 +4,11 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center 100px; /* Push the image down */
+    background-position: center 100px;
     color: #4B3A29;
     font-family: 'Georgia', serif;
     margin: 0;
     padding: 0;
-    
     text-align: center;
 }
 
@@ -24,25 +23,61 @@ h1 {
     margin-top: 20px;
 }
 
-/* Button Styles */
+/* Button Styling (Global) */
 button {
     background-color: #A62639;
     color: #F9F4E6;
     border: none;
     padding: 10px 20px;
-    margin: 10px 0;
+    margin: 10px;
     font-size: 16px;
     font-family: 'Georgia', serif;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: inline-block;
 }
 
 button:hover {
     background-color: #891C2D;
 }
 
-/* Quiz Section Styles */
+/* Top-left Controls and Language Switcher Alignment */
+#top-left-controls,
+#language-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    top: 10px;
+    z-index: 1000;
+}
+
+/* Top-left Controls */
+#top-left-controls {
+    left: 10px;
+}
+
+/* Language Switcher */
+#language-switcher {
+    right: 10px;
+}
+
+#top-left-controls button,
+#language-switcher button {
+    padding: 10px 15px;
+    font-size: 14px;
+    font-family: 'Georgia', serif;
+    border-radius: 5px;
+}
+
+/* Hover Effect for Control Buttons */
+#top-left-controls button:hover,
+#language-switcher button:hover {
+    background-color: #A62639;
+}
+
+/* Quiz Section Styling */
 .quiz-section {
     display: none;
     background-color: #F9F4E6;
@@ -66,7 +101,7 @@ input[type="radio"] {
     margin-right: 10px;
 }
 
-/* Result Summary Styles */
+/* Result Summary Styling */
 #result-summary {
     display: none;
     font-weight: bold;
@@ -94,7 +129,7 @@ input[type="radio"] {
     color: #B22222;
 }
 
-/* Chart Container Styles */
+/* Chart Container Styling */
 #chartContainer {
     display: none;
     max-width: 90%;
@@ -104,54 +139,6 @@ input[type="radio"] {
     border-radius: 8px;
     border: 2px solid #A62639;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Language Switcher */
-#language-switcher {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-}
-
-#language-switcher button {
-    background-color: #6E0B14;
-    color: #F9F4E6;
-    border: none;
-    padding: 5px 10px;
-    margin: 0 5px;
-    font-family: 'Georgia', serif;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#language-switcher button:hover {
-    background-color: #A62639;
-}
-
-/* Top-left Controls */
-#top-left-controls {
-    position: fixed; /* Fixed positioning to keep it at the top-left */
-    top: 10px;
-    left: 10px;
-    z-index: 1000; /* Ensures it stays above other elements */
-}
-
-#top-left-controls button {
-    background-color: #6E0B14;
-    color: #F9F4E6;
-    border: none;
-    padding: 10px 15px;
-    font-family: 'Georgia', serif;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#top-left-controls button:hover {
-    background-color: #A62639;
 }
 
 /* Responsive Design */
