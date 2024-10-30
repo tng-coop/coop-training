@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Co-op Training Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -8,6 +9,10 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <div id="top-left-controls">
+        <button onclick="clearLocalStorage()">Clear History</button>
+    </div>
+
     <div id="language-switcher">
         <button onclick="switchLanguage('en')">EN</button>
         <button onclick="switchLanguage('jp')">JP</button>

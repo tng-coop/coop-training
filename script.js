@@ -1,3 +1,10 @@
+// Clear LocalStorage function
+function clearLocalStorage() {
+  localStorage.clear();
+  alert("LocalStorage cleared!");
+  location.reload(); // Reloads the page to reflect changes
+}
+
 let currentSection = 0; // Start from 0, to represent the start screen
 let score = 0;
 let startTime;
