@@ -28,7 +28,8 @@ const messages = {
     },
   };
   
-  let currentLanguage = "en"; // Default language
+  // Retrieve language from localStorage or default to English
+  let currentLanguage = localStorage.getItem("quizLanguage") || "en";
   
   // Helper function to get the correct localized message
   function getMessage(key, replacements = {}) {
@@ -170,17 +171,22 @@ const messages = {
   }
   
   function switchLanguage(lang) {
-    currentLanguage = lang; // Set the current language
+    currentLanguage = lang; // Update the language
+    localStorage.setItem("quizLanguage", lang); // Store in localStorage
     document.querySelectorAll("[data-en]").forEach((el) => {
       el.textContent = el.getAttribute(`data-${lang}`);
     });
   }
   
+  // Initialize language on page load
+  window.addEventListener("load", () => {
+    switchLanguage(currentLanguage); // Set language from localStorage
+  });
+  
   // Event listener to handle both the Enter key and numeric keys
   document.addEventListener("keydown", function (event) {
     const key = event.key;
   
-    // Handle number key presses (1, 2, 3, 4)
     if (key >= "1" && key <= "4") {
       const index = key - 1;
       const radios = document.querySelectorAll(
@@ -189,9 +195,7 @@ const messages = {
       if (radios[index]) {
         radios[index].checked = true;
       }
-    }
-    // Handle Enter key press
-    else if (key === "Enter") {
+    } else if (key === "Enter") {
       if (currentSection === 0) {
         startQuiz();
       } else if (!answerSubmitted) {
