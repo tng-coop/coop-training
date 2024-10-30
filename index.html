@@ -5,17 +5,18 @@
     <style>
         /* General Styles */
         body {
-            background-color: #FAF3E0; /* Warm beige background */
-            color: #4A4A4A; /* Dark, soft text color */
-            font-family: 'Arial', sans-serif;
+            background-color: #F3EDE2; /* Soft cream background */
+            color: #4B3A29; /* Dark brown, manuscript-like text color */
+            font-family: 'Georgia', serif; /* Traditional font */
             margin: 0;
             padding: 0;
             text-align: center;
         }
 
         h1, h2 {
-            color: #5A352D; /* Dark brown color for headers */
-            font-weight: normal;
+            color: #6E0B14; /* Deep red for headings */
+            font-family: 'Times New Roman', serif; /* Classic serif font for headings */
+            font-weight: bold;
         }
 
         h1 {
@@ -24,38 +25,41 @@
 
         /* Button Styles */
         button {
-            background-color: #D4A373; /* Warm, inviting brown */
-            color: white;
+            background-color: #A62639; /* Deep red */
+            color: #F9F4E6; /* Light cream text */
             border: none;
             padding: 10px 20px;
             margin: 10px 0;
             font-size: 16px;
+            font-family: 'Georgia', serif;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #B08862; /* Darker shade on hover */
+            background-color: #891C2D; /* Darker red shade on hover */
         }
 
         /* Quiz Section Styles */
         .quiz-section {
             display: none;
-            background-color: #FFF8F0; /* Light warm background for quiz sections */
+            background-color: #F9F4E6; /* Light cream background for quiz sections */
             padding: 20px;
             border-radius: 8px;
+            border: 2px solid #A62639; /* Deep red border */
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             margin: 20px auto;
-            max-width: 500px;
+            max-width: 600px;
             text-align: left;
         }
 
         /* Answer and Result Styles */
         label {
             display: block;
-            margin: 8px 0;
+            margin: 10px 0;
             font-size: 16px;
+            font-family: 'Georgia', serif;
         }
 
         input[type="radio"] {
@@ -65,12 +69,13 @@
         #result-summary {
             display: none;
             font-weight: bold;
-            background-color: #FFF8F0;
+            background-color: #F9F4E6;
             padding: 20px;
             border-radius: 8px;
+            border: 2px solid #A62639;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             margin: 20px auto;
-            max-width: 500px;
+            max-width: 600px;
         }
 
         /* History Styles */
@@ -81,11 +86,11 @@
 
         /* Result Feedback */
         .result-correct {
-            color: #4CAF50; /* Green for correct */
+            color: #6A8E3E; /* Green for correct */
         }
 
         .result-incorrect {
-            color: #E57373; /* Red for incorrect */
+            color: #B22222; /* Red for incorrect */
         }
     </style>
     <script>
