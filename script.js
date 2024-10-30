@@ -69,6 +69,7 @@ function checkAnswer(questionNumber, correctAnswer) {
             result.className = "result-correct";
             score++;
             document.getElementById(`next${questionNumber}`).style.display = "inline";
+            if (questionNumber === 3)  document.getElementById('restartButton').style.display = "inline";
             answerSubmitted = true; // Correct answer, now we can proceed to the next question
         } else {
             result.textContent = getMessage("incorrect");
