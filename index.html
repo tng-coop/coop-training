@@ -105,6 +105,29 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
 
+        #language-switcher {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        #language-switcher button {
+            background-color: #6E0B14;
+            color: #F9F4E6;
+            border: none;
+            padding: 5px 10px;
+            margin: 0 5px;
+            font-family: 'Georgia', serif;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #language-switcher button:hover {
+            background-color: #A62639;
+        }
+
         @media only screen and (max-width: 600px) {
             button {
                 font-size: 14px;
@@ -243,8 +266,13 @@
             });
         }
 
-        // Event listener to handle both the Enter key and numeric keys
-        document.addEventListener('keydown', function(event) {
+        function switchLanguage(lang) {
+            alert(`Switching to ${lang === 'en' ? 'English' : 'Japanese'}...`);
+            // Add your language switch logic here.
+        }
+
+                // Event listener to handle both the Enter key and numeric keys
+                document.addEventListener('keydown', function(event) {
             const key = event.key;
 
             // Handle number key presses (1, 2, 3, 4)
@@ -284,6 +312,11 @@
     </script>
 </head>
 <body>
+    <div id="language-switcher">
+        <button onclick="switchLanguage('en')">EN</button>
+        <button onclick="switchLanguage('jp')">JP</button>
+    </div>
+
     <h1>Co-op Training Quiz</h1>
     <button id="startButton" onclick="startQuiz()">Start Quiz</button>
 
