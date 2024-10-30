@@ -144,11 +144,11 @@
                     result.textContent = "Correct!";
                     result.className = "result-correct";
                     score++;
+                    document.getElementById(`next${questionNumber}`).style.display = "inline";
                 } else {
-                    result.textContent = `Not quite! The correct answer was '${correctAnswer}'.`;
+                    result.textContent = "Not quite! Please try again.";
                     result.className = "result-incorrect";
                 }
-                document.getElementById(`next${questionNumber}`).style.display = "inline";
                 answerSubmitted = true;
             } else {
                 alert("Please select an answer!");
