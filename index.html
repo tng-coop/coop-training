@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Co-op Training Quiz</title>
+    <style>
+        .quiz-section { display: none; }
+        #result-summary { display: none; font-weight: bold; }
+    </style>
+    <script>
+        let currentSection = 1;
+        let score = 0;
+        let startTime;
+
+        // Start timer at the beginning of the quiz
+        function startQuiz() {
+            startTime = new Date().getTime();
+            document.getElementById("startButton").style.display = "none";
+            showSection(1);
+        }
+
+        function checkAnswer(questionNumber, correctAnswer) {
+            const selectedAnswer = document.querySelector(`input[name="answer${questionNumber}"]:checked`);
+            const result = document.getElementById(`result${questionNumber}`);
+            if (selectedAnswer) {
+                if (selectedAnswer.value === correctAnswer) {
+                    result.textContent = "Correct!";
+                    result.style.color = "green";
+                    score++;
+                } else {
+                    result.textContent = "Not quite! The correct answer was the one marked '" + correctAnswer + "'.";
+                    result.style.color = "red";
+                }
+                document.getElementById(`next${questionNumber}`).style.display = "inline";
+            } else {
+                alert("Please select an answer!");
+            }
+        }
+
+        function showSection(sectionNumber) {
+            if (currentSection > 0) {
+                document.getElementById(`section${currentSection}`).style.display = "none";
+            }
+            currentSection = sectionNumber;
+            document.getElementById(`section${sectionNumber}`).style.display = "block";
+        }
+
+        function showFinalResult() {
+            // Store score in localStorage
+            localStorage.setItem("quizScore", score);
+
+            // Calculate time taken
+            const endTime = new Date().getTime();
+            const timeTaken = Math.round((endTime - startTime) / 1000);
+            localStorage.setItem("timeTaken", timeTaken);
+
+            // Display result summary for enterprise management
+            document.getElementById("result-summary").style.display = "block";
+            document.getElementById("final-score").textContent = `You scored ${score} out of 3!`;
+            document.getElementById("time-taken").textContent = `Time taken: ${timeTaken} seconds`;
+
+            // Display enterprise management statistics
+            const enterpriseStats = `
+                Quiz Results for Enterprise Management:
+                - Total Correct Answers: ${score}
+                - Completion Time: ${timeTaken} seconds
+                - Performance: ${score >= 2 ? "Pass" : "Needs Improvement"}
+            `;
+            document.getElementById("enterprise-stats").textContent = enterpriseStats;
+        }
+    </script>
+</head>
+<body>
+    <h1>Co-op Training Quiz</h1>
+    <button id="startButton" onclick="startQuiz()">Start Quiz</button>
+
+    <!-- Question 1 -->
+    <div id="section1" class="quiz-section" style="display: none;">
+        <h2>What Makes a Co-op Training Program Successful?</h2>
+        <form>
+            <label><input type="radio" name="answer1" value="Unity"> Unity in purpose and fellowship</label><br>
+            <label><input type="radio" name="answer1" value="Stewardship"> Faithful stewardship of talents and resources</label><br>
+            <label><input type="radio" name="answer1" value="Service"> Service to the community and co-op members</label><br>
+            <label><input type="radio" name="answer1" value="All"> All of the above</label><br><br>
+            <button type="button" onclick="checkAnswer(1, 'All')">Submit Answer</button>
+        </form>
+        <p id="result1"></p>
+        <button id="next1" style="display:none;" onclick="showSection(2)">Next</button>
+    </div>
+
+    <!-- Question 2 -->
+    <div id="section2" class="quiz-section">
+        <h2>Which of the following actions is appropriate when handling sensitive co-op information?</h2>
+        <form>
+            <label><input type="radio" name="answer2" value="Share"> Share it with outside parties without permission</label><br>
+            <label><input type="radio" name="answer2" value="StoreSecurely"> Store it securely and limit access to authorized members only</label><br>
+            <label><input type="radio" name="answer2" value="DiscussPublicly"> Discuss it in a public setting</label><br>
+            <label><input type="radio" name="answer2" value="PersonalUse"> Use it for personal gain</label><br><br>
+            <button type="button" onclick="checkAnswer(2, 'StoreSecurely')">Submit Answer</button>
+        </form>
+        <p id="result2"></p>
+        <button id="next2" style="display:none;" onclick="showSection(3)">Next</button>
+    </div>
+
+    <!-- Question 3 -->
+    <div id="section3" class="quiz-section">
+        <h2>What should a member do if they notice a potential safety hazard in the co-op workplace?</h2>
+        <form>
+            <label><input type="radio" name="answer3" value="Ignore"> Ignore it and hope it will go away</label><br>
+            <label><input type="radio" name="answer3" value="Report"> Report it immediately to a supervisor or designated safety officer</label><br>
+            <label><input type="radio" name="answer3" value="FixAlone"> Attempt to fix it themselves without any guidance</label><br>
+            <label><input type="radio" name="answer3" value="Delay"> Wait until a meeting to bring it up</label><br><br>
+            <button type="button" onclick="checkAnswer(3, 'Report')">Submit Answer</button>
+        </form>
+        <p id="result3"></p>
+        <button id="next3" style="display:none;" onclick="showFinalResult()">Finish</button>
+    </div>
+
+    <!-- Final Score Summary -->
+    <div id="result-summary">
+        <p id="final-score"></p>
+        <p id="time-taken"></p>
+        <p>Thanks for taking the quiz!</p>
+        <p id="enterprise-stats"></p>
+    </div>
+</body>
+</html>
