@@ -6,20 +6,20 @@
         /* General Styles */
         body {
             background-image: url('Roman-missal-St.Joseph-Worker-by-Royal-Griffin_8538059693_0f44446f1d_C1-1.jpg');
-            background-size: cover; /* Ensures the image covers the entire background */
+            background-size: cover;
             background-repeat: no-repeat;
-            background-attachment: fixed; /* Keeps the image in place when scrolling */
-            background-position: center; /* Centers the image */
-            color: #4B3A29; /* Dark brown, manuscript-like text color */
-            font-family: 'Georgia', serif; /* Traditional font */
+            background-attachment: fixed;
+            background-position: center;
+            color: #4B3A29;
+            font-family: 'Georgia', serif;
             margin: 0;
             padding: 0;
             text-align: center;
         }
 
         h1, h2 {
-            color: #6E0B14; /* Deep red for headings */
-            font-family: 'Times New Roman', serif; /* Classic serif font for headings */
+            color: #6E0B14;
+            font-family: 'Times New Roman', serif;
             font-weight: bold;
         }
 
@@ -27,10 +27,9 @@
             margin-top: 20px;
         }
 
-        /* Button Styles */
         button {
-            background-color: #A62639; /* Deep red */
-            color: #F9F4E6; /* Light cream text */
+            background-color: #A62639;
+            color: #F9F4E6;
             border: none;
             padding: 10px 20px;
             margin: 10px 0;
@@ -42,23 +41,21 @@
         }
 
         button:hover {
-            background-color: #891C2D; /* Darker red shade on hover */
+            background-color: #891C2D;
         }
 
-        /* Quiz Section Styles */
         .quiz-section {
             display: none;
-            background-color: #F9F4E6; /* Light cream background, no transparency */
+            background-color: #F9F4E6;
             padding: 20px;
             border-radius: 8px;
-            border: 2px solid #A62639; /* Deep red border */
+            border: 2px solid #A62639;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             margin: 20px auto;
             max-width: 600px;
             text-align: left;
         }
 
-        /* Answer and Result Styles */
         label {
             display: block;
             margin: 10px 0;
@@ -73,7 +70,7 @@
         #result-summary {
             display: none;
             font-weight: bold;
-            background-color: #F9F4E6; /* Solid cream background */
+            background-color: #F9F4E6;
             padding: 20px;
             border-radius: 8px;
             border: 2px solid #A62639;
@@ -82,19 +79,17 @@
             max-width: 600px;
         }
 
-        /* History Styles */
         #history {
             margin-top: 20px;
             text-align: left;
         }
 
-        /* Result Feedback */
         .result-correct {
-            color: #6A8E3E; /* Green for correct */
+            color: #6A8E3E;
         }
 
         .result-incorrect {
-            color: #B22222; /* Red for incorrect */
+            color: #B22222;
         }
     </style>
     <script>
@@ -174,6 +169,18 @@
                 historyDiv.innerHTML += attemptInfo;
             });
         }
+
+        // Keyboard event handling for selecting answers with keys 1, 2, 3, 4
+        document.addEventListener('keydown', function(event) {
+            const key = event.key;
+            if (key >= '1' && key <= '4') {
+                const index = key - 1; // Convert key to index (0-based)
+                const radios = document.querySelectorAll(`#section${currentSection} input[type="radio"]`);
+                if (radios[index]) {
+                    radios[index].checked = true;
+                }
+            }
+        });
     </script>
 </head>
 <body>
