@@ -1,0 +1,141 @@
+/* General Styles */
+body {
+    background-image: url('Roman-missal-St.Joseph-Worker-by-Royal-Griffin_8538059693_0f44446f1d_C1-1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: #4B3A29;
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #6E0B14;
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+button {
+    background-color: #A62639;
+    color: #F9F4E6;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    font-size: 16px;
+    font-family: 'Georgia', serif;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #891C2D;
+}
+
+.quiz-section {
+    display: none;
+    background-color: #F9F4E6;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #A62639;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 90%;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+    font-size: 16px;
+    font-family: 'Georgia', serif;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+#result-summary {
+    display: none;
+    font-weight: bold;
+    background-color: #F9F4E6;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #A62639;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 90%;
+}
+
+#history {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.result-correct {
+    color: #6A8E3E;
+}
+
+.result-incorrect {
+    color: #B22222;
+}
+
+#chartContainer {
+    display: none;
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #F9F4E6;
+    border-radius: 8px;
+    border: 2px solid #A62639;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#language-switcher {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#language-switcher button {
+    background-color: #6E0B14;
+    color: #F9F4E6;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#language-switcher button:hover {
+    background-color: #A62639;
+}
+
+@media only screen and (max-width: 600px) {
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    h1, h2 {
+        font-size: 20px;
+    }
+
+    .quiz-section, #result-summary, #chartContainer {
+        padding: 15px;
+    }
+}
