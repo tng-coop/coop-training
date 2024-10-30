@@ -45,28 +45,76 @@
         }
 
         function showFinalResult() {
-            // Store score in localStorage
-            localStorage.setItem("quizScore", score);
-
-            // Calculate time taken
             const endTime = new Date().getTime();
             const timeTaken = Math.round((endTime - startTime) / 1000);
-            localStorage.setItem("timeTaken", timeTaken);
 
-            // Display result summary for enterprise management
+            // Retrieve existing quiz history from localStorage or initialize an empty array
+            const quizHistory = JSON.parse(localStorage.getItem("quizHistory")) || [];
+
+            // Add the current quiz attempt to the history array
+            const attempt = {
+                score: score,
+                timeTaken: timeTaken,
+                date: new Date().toLocaleString()
+            };
+            quizHistory.push(attempt);
+
+            // Save the updated history back to localStorage
+            localStorage.setItem("quizHistory", JSON.stringify(quizHistory));
+
+            // Display the current result summary
             document.getElementById("result-summary").style.display = "block";
             document.getElementById("final-score").textContent = `You scored ${score} out of 3!`;
             document.getElementById("time-taken").textContent = `Time taken: ${timeTaken} seconds`;
 
-            // Display enterprise management statistics
-            const enterpriseStats = `
-                Quiz Results for Enterprise Management:
-                - Total Correct Answers: ${score}
-                - Completion Time: ${timeTaken} seconds
-                - Performance: ${score >= 2 ? "Pass" : "Needs Improvement"}
-            `;
-            document.getElementById("enterprise-stats").textContent = enterpriseStats;
+            // Display historical data for enterprise management
+            displayHistory();
         }
+
+        function displayHistory() {
+            const quizHistory = JSON.parse(localStorage.getItem("quizHistory")) || [];
+            const historyDiv = document.getElementById("history");
+
+            historyDiv.innerHTML = "<h3>Quiz History</h3>";
+            quizHistory.forEach((attempt, index) => {
+                const attemptInfo = `
+                    <p>
+                        Attempt ${index + 1}:<br>
+                        Score: ${attempt.score} / 3<br>
+                        Time Taken: ${attempt.timeTaken} seconds<br>
+                        Date: ${attempt.date}
+                    </p>
+                `;
+                historyDiv.innerHTML += attemptInfo;
+            });
+        }
+
+        // Handle keystrokes for answer selection and navigation
+        document.addEventListener("keydown", function(event) {
+            const key = event.key;
+
+            // Select answer based on keystroke (1, 2, 3, or 4)
+            if (['1', '2', '3', '4'].includes(key)) {
+                const optionIndex = parseInt(key) - 1;
+                const questionNumber = currentSection;
+                const options = document.querySelectorAll(`input[name="answer${questionNumber}"]`);
+                if (options[optionIndex]) {
+                    options[optionIndex].checked = true;
+                }
+            }
+
+            // Submit answer or go to the next section on "Enter"
+            if (key === "Enter") {
+                const submitButton = document.querySelector(`#section${currentSection} button[type="button"]`);
+                if (submitButton) {
+                    submitButton.click(); // Triggers checkAnswer for the current question
+                } else if (currentSection < 3) {
+                    showSection(currentSection + 1);
+                } else if (currentSection === 3) {
+                    showFinalResult();
+                }
+            }
+        });
     </script>
 </head>
 <body>
@@ -120,7 +168,7 @@
         <p id="final-score"></p>
         <p id="time-taken"></p>
         <p>Thanks for taking the quiz!</p>
-        <p id="enterprise-stats"></p>
+        <div id="history"></div>
     </div>
 </body>
 </html>
