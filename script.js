@@ -189,7 +189,7 @@ window.addEventListener("load", () => {
     switchLanguage(currentLanguage);
 });
 
-// Event listener to handle both the Enter key, numeric keys, and language switch keys
+// Event listener to handle Enter, numeric keys, language switch, and restart (R key)
 document.addEventListener("keydown", function (event) {
     const key = event.key;
 
@@ -219,9 +219,13 @@ document.addEventListener("keydown", function (event) {
                 showFinalResult();
             }
         }
+    } else if (key === "C" || key === "c") {
+        clearLocalStorage(); // Switch to English
     } else if (key === "E" || key === "e") {
-        switchLanguage("en");
+        switchLanguage("en"); // Switch to English
     } else if (key === "J" || key === "j") {
-        switchLanguage("jp");
+        switchLanguage("jp"); // Switch to Japanese
+    } else if (key === "R" || key === "r") {
+        location.reload(); // Reload the page
     }
 });
