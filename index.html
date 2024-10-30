@@ -93,7 +93,7 @@
         }
     </style>
     <script>
-        let currentSection = 1;
+        let currentSection = 0;  // Start from 0, to represent the start screen
         let score = 0;
         let startTime;
         let answerSubmitted = false;
@@ -101,7 +101,7 @@
         function startQuiz() {
             startTime = new Date().getTime();
             document.getElementById("startButton").style.display = "none";
-            showSection(1);
+            showSection(1);  // Go to the first question
         }
 
         function checkAnswer(questionNumber, correctAnswer) {
@@ -173,7 +173,10 @@
         document.addEventListener('keydown', function(event) {
             const key = event.key;
 
-            if (key >= '1' && key <= '4') {
+            if (currentSection === 0 && key === 'Enter') {
+                // Start the quiz from the start screen
+                startQuiz();
+            } else if (key >= '1' && key <= '4') {
                 const index = key - 1;
                 const radios = document.querySelectorAll(`#section${currentSection} input[type="radio"]`);
                 if (radios[index]) {
