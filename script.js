@@ -136,7 +136,9 @@ function displayChart() {
     const quizHistory = JSON.parse(localStorage.getItem("quizHistory")) || [];
     const scores = quizHistory.map((attempt) => attempt.score);
     const times = quizHistory.map((attempt) => attempt.timeTaken);
-    const labels = quizHistory.map((_, index) => `Attempt ${index + 1}`);
+    const labels = quizHistory.map((_, index) => 
+        getMessage("attempt", { index: index + 1 })
+    );
 
     const ctx = document.getElementById("quizChart").getContext("2d");
     new Chart(ctx, {
@@ -145,14 +147,14 @@ function displayChart() {
             labels: labels,
             datasets: [
                 {
-                    label: "Score",
+                    label: getMessage("score", { score: "" }).replace(":", ""),
                     data: scores,
                     backgroundColor: "rgba(166, 38, 57, 0.6)",
                     borderColor: "rgba(166, 38, 57, 1)",
                     borderWidth: 1,
                 },
                 {
-                    label: "Time Taken (seconds)",
+                    label: getMessage("timeTakenHistory", { time: "" }).replace(":", ""),
                     data: times,
                     backgroundColor: "rgba(110, 11, 20, 0.6)",
                     borderColor: "rgba(110, 11, 20, 1)",
@@ -169,6 +171,7 @@ function displayChart() {
         },
     });
 }
+
 
 function switchLanguage(lang) {
     currentLanguage = lang; // Update the language
