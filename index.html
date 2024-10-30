@@ -109,6 +109,9 @@
             </label><br><br>
             <button type="button" data-en="Submit Answer" data-jp="回答を送信" 
                     onclick="checkAnswer(3, 'Report')">Submit Answer</button>
+        <button id="restartButton" data-en="Start Again" data-jp="再度開始" onclick="restartQuiz()"> 
+            <span>Start Again</span>
+        </button>
         </form>
         <p id="result3"></p>
         <button id="next3" data-en="Finish" data-jp="終了" style="display:none;" onclick="showFinalResult()">Finish</button>
@@ -118,13 +121,13 @@
         <canvas id="quizChart"></canvas>
     </div>
 
-    <div id="result-summary">
-        <p id="final-score"></p>
+    <div id="result-summary"> <p id="final-score"></p>
         <p id="time-taken"></p>
         <p data-en="Thanks for taking the quiz!" data-jp="クイズに参加していただきありがとうございます！">
             Thanks for taking the quiz!
         </p>
         <div id="history"></div>
     </div>
+    
 </body>
 </html>
