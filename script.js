@@ -173,10 +173,25 @@ const messages = {
   function switchLanguage(lang) {
     currentLanguage = lang; // Update the language
     localStorage.setItem("quizLanguage", lang); // Store in localStorage
+  
+    // Safely update only the inner content of elements without disrupting the structure
     document.querySelectorAll("[data-en]").forEach((el) => {
-      el.textContent = el.getAttribute(`data-${lang}`);
+      if (el.tagName === "BUTTON" || el.tagName === "LABEL") {
+        // Check for span inside button/label and update the span content
+        const span = el.querySelector("span");
+        if (span) {
+          span.textContent = el.getAttribute(`data-${lang}`);
+        } else {
+          // If no span, directly update the element text content
+          el.textContent = el.getAttribute(`data-${lang}`);
+        }
+      } else {
+        // For other elements, directly update the text content
+        el.textContent = el.getAttribute(`data-${lang}`);
+      }
     });
   }
+  
   
   // Initialize language on page load
   window.addEventListener("load", () => {
