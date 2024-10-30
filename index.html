@@ -27,17 +27,21 @@
             What Makes a Co-op Training Program Successful?
         </h2>
         <form>
-            <label data-en="Unity in purpose and fellowship" data-jp="目的と親睦の一致">
-                <input type="radio" name="answer1" value="Unity"> Unity in purpose and fellowship
+            <label>
+                <input type="radio" name="answer1" value="Unity">
+                <span data-en="Unity in purpose and fellowship" data-jp="目的と親睦の一致">Unity in purpose and fellowship</span>
             </label>
-            <label data-en="Faithful stewardship of talents and resources" data-jp="才能と資源の忠実な管理">
-                <input type="radio" name="answer1" value="Stewardship"> Faithful stewardship of talents and resources
+            <label>
+                <input type="radio" name="answer1" value="Stewardship">
+                <span data-en="Faithful stewardship of talents and resources" data-jp="才能と資源の忠実な管理">Faithful stewardship of talents and resources</span>
             </label>
-            <label data-en="Service to the community and co-op members" data-jp="地域社会と協同組合員への奉仕">
-                <input type="radio" name="answer1" value="Service"> Service to the community and co-op members
+            <label>
+                <input type="radio" name="answer1" value="Service">
+                <span data-en="Service to the community and co-op members" data-jp="地域社会と協同組合員への奉仕">Service to the community and co-op members</span>
             </label>
-            <label data-en="All of the above" data-jp="上記のすべて">
-                <input type="radio" name="answer1" value="All"> All of the above
+            <label>
+                <input type="radio" name="answer1" value="All">
+                <span data-en="All of the above" data-jp="上記のすべて">All of the above</span>
             </label><br><br>
             <button type="button" data-en="Submit Answer" data-jp="回答を送信" 
                     onclick="checkAnswer(1, 'All')">Submit Answer</button>
@@ -52,19 +56,24 @@
             Which of the following actions is appropriate when handling sensitive co-op information?
         </h2>
         <form>
-            <label data-en="Share it with outside parties without permission" 
-                   data-jp="許可なく外部に共有する">
-                <input type="radio" name="answer2" value="Share"> Share it with outside parties without permission
+            <label>
+                <input type="radio" name="answer2" value="Share">
+                <span data-en="Share it with outside parties without permission" 
+                      data-jp="許可なく外部に共有する">Share it with outside parties without permission</span>
             </label>
-            <label data-en="Store it securely and limit access to authorized members only" 
-                   data-jp="安全に保管し、権限のあるメンバーのみにアクセスを制限する">
-                <input type="radio" name="answer2" value="StoreSecurely"> Store it securely and limit access to authorized members only
+            <label>
+                <input type="radio" name="answer2" value="StoreSecurely">
+                <span data-en="Store it securely and limit access to authorized members only" 
+                      data-jp="安全に保管し、権限のあるメンバーのみにアクセスを制限する">
+                      Store it securely and limit access to authorized members only</span>
             </label>
-            <label data-en="Discuss it in a public setting" data-jp="公共の場で議論する">
-                <input type="radio" name="answer2" value="DiscussPublicly"> Discuss it in a public setting
+            <label>
+                <input type="radio" name="answer2" value="DiscussPublicly">
+                <span data-en="Discuss it in a public setting" data-jp="公共の場で議論する">Discuss it in a public setting</span>
             </label>
-            <label data-en="Use it for personal gain" data-jp="個人的な利益のために使用する">
-                <input type="radio" name="answer2" value="PersonalUse"> Use it for personal gain
+            <label>
+                <input type="radio" name="answer2" value="PersonalUse">
+                <span data-en="Use it for personal gain" data-jp="個人的な利益のために使用する">Use it for personal gain</span>
             </label><br><br>
             <button type="button" data-en="Submit Answer" data-jp="回答を送信" 
                     onclick="checkAnswer(2, 'StoreSecurely')">Submit Answer</button>
@@ -79,19 +88,24 @@
             What should a member do if they notice a potential safety hazard in the co-op workplace?
         </h2>
         <form>
-            <label data-en="Ignore it and hope it will go away" data-jp="無視して自然に解決することを願う">
-                <input type="radio" name="answer3" value="Ignore"> Ignore it and hope it will go away
+            <label>
+                <input type="radio" name="answer3" value="Ignore">
+                <span data-en="Ignore it and hope it will go away" data-jp="無視して自然に解決することを願う">Ignore it and hope it will go away</span>
             </label>
-            <label data-en="Report it immediately to a supervisor or designated safety officer" 
-                   data-jp="上司または指定の安全担当者に直ちに報告する">
-                <input type="radio" name="answer3" value="Report"> Report it immediately to a supervisor or designated safety officer
+            <label>
+                <input type="radio" name="answer3" value="Report">
+                <span data-en="Report it immediately to a supervisor or designated safety officer" 
+                      data-jp="上司または指定の安全担当者に直ちに報告する">
+                      Report it immediately to a supervisor or designated safety officer</span>
             </label>
-            <label data-en="Attempt to fix it themselves without any guidance" 
-                   data-jp="指示なしで自分で修正を試みる">
-                <input type="radio" name="answer3" value="FixAlone"> Attempt to fix it themselves without any guidance
+            <label>
+                <input type="radio" name="answer3" value="FixAlone">
+                <span data-en="Attempt to fix it themselves without any guidance" 
+                      data-jp="指示なしで自分で修正を試みる">Attempt to fix it themselves without any guidance</span>
             </label>
-            <label data-en="Wait until a meeting to bring it up" data-jp="会議まで待って提起する">
-                <input type="radio" name="answer3" value="Delay"> Wait until a meeting to bring it up
+            <label>
+                <input type="radio" name="answer3" value="Delay">
+                <span data-en="Wait until a meeting to bring it up" data-jp="会議まで待って提起する">Wait until a meeting to bring it up</span>
             </label><br><br>
             <button type="button" data-en="Submit Answer" data-jp="回答を送信" 
                     onclick="checkAnswer(3, 'Report')">Submit Answer</button>
@@ -107,7 +121,9 @@
     <div id="result-summary">
         <p id="final-score"></p>
         <p id="time-taken"></p>
-        <p data-en="Thanks for taking the quiz!" data-jp="クイズに参加していただきありがとうございます！">Thanks for taking the quiz!</p>
+        <p data-en="Thanks for taking the quiz!" data-jp="クイズに参加していただきありがとうございます！">
+            Thanks for taking the quiz!
+        </p>
         <div id="history"></div>
     </div>
 </body>

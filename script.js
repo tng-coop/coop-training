@@ -130,9 +130,11 @@ function displayChart() {
 }
 
 function switchLanguage(lang) {
-  alert(`Switching to ${lang === "en" ? "English" : "Japanese"}...`);
-  // Add your language switch logic here.
+    document.querySelectorAll('[data-en]').forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+    });
 }
+
 
 // Event listener to handle both the Enter key and numeric keys
 document.addEventListener("keydown", function (event) {
