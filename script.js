@@ -174,19 +174,19 @@ const messages = {
     currentLanguage = lang; // Update the language
     localStorage.setItem("quizLanguage", lang); // Store in localStorage
   
-    // Safely update only the inner content of elements without disrupting the structure
+    // Safely update the inner content of elements without disrupting their structure
     document.querySelectorAll("[data-en]").forEach((el) => {
       if (el.tagName === "BUTTON" || el.tagName === "LABEL") {
-        // Check for span inside button/label and update the span content
+        // Check for span inside button/label and update its content
         const span = el.querySelector("span");
         if (span) {
           span.textContent = el.getAttribute(`data-${lang}`);
         } else {
-          // If no span, directly update the element text content
+          // If no span, update the element's text content directly
           el.textContent = el.getAttribute(`data-${lang}`);
         }
       } else {
-        // For other elements, directly update the text content
+        // For other elements, update their text content directly
         el.textContent = el.getAttribute(`data-${lang}`);
       }
     });
@@ -198,8 +198,8 @@ const messages = {
     switchLanguage(currentLanguage); // Set language from localStorage
   });
   
-  // Event listener to handle both the Enter key and numeric keys
-  document.addEventListener("keydown", function (event) {
+// Event listener to handle both the Enter key, numeric keys, and language switch keys
+document.addEventListener("keydown", function (event) {
     const key = event.key;
   
     if (key >= "1" && key <= "4") {
@@ -228,6 +228,10 @@ const messages = {
           showFinalResult();
         }
       }
+    } else if (key === "E" || key === "e") {
+      switchLanguage("en"); // Switch to English
+    } else if (key === "J" || key === "j") {
+      switchLanguage("jp"); // Switch to Japanese
     }
   });
   
